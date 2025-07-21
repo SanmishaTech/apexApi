@@ -1,5 +1,5 @@
 const express = require("express");
-const clubController = require("../controllers/clubController");
+const stateController = require("../controllers/stateController");
 const auth = require("../middleware/auth");
 
 const router = express.Router();
@@ -7,30 +7,30 @@ const router = express.Router();
 /**
  * @swagger
  * tags:
- *   name: Clubs
- *   description: Club management endpoints
+ *   name: States
+ *   description: State management endpoints
  */
 
 /**
  * @swagger
- * /clubs:
+ * /states:
  *   get:
- *     summary: Get all clubs
- *     tags: [Clubs]
+ *     summary: Get all states
+ *     tags: [States]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: List of all clubs
+ *         description: List of all states
  */
-router.get("/", auth, clubController.getClubs);
+router.get("/", auth, stateController.getStates);
 
 /**
  * @swagger
- * /clubs/{id}:
+ * /states/{id}:
  *   get:
- *     summary: Get a club by ID
- *     tags: [Clubs]
+ *     summary: Get a state by ID
+ *     tags: [States]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -39,21 +39,21 @@ router.get("/", auth, clubController.getClubs);
  *         schema:
  *           type: integer
  *         required: true
- *         description: Club ID
+ *         description: State ID
  *     responses:
  *       200:
- *         description: Club data
+ *         description: State data
  *       404:
- *         description: Club not found
+ *         description: State not found
  */
-router.get("/:id", auth, clubController.getClub);
+router.get("/:id", auth, stateController.getState);
 
 /**
  * @swagger
- * /clubs:
+ * /states:
  *   post:
- *     summary: Create a new club
- *     tags: [Clubs]
+ *     summary: Create a new state
+ *     tags: [States]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -61,19 +61,19 @@ router.get("/:id", auth, clubController.getClub);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Club'
+ *             $ref: '#/components/schemas/State'
  *     responses:
  *       201:
- *         description: Club created
+ *         description: State created
  */
-router.post("/", auth, clubController.createClub);
+router.post("/", auth, stateController.createState);
 
 /**
  * @swagger
- * /clubs/{id}:
+ * /states/{id}:
  *   put:
- *     summary: Update a club by ID
- *     tags: [Clubs]
+ *     summary: Update a state by ID
+ *     tags: [States]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -82,27 +82,27 @@ router.post("/", auth, clubController.createClub);
  *         schema:
  *           type: integer
  *         required: true
- *         description: Club ID
+ *         description: State ID
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Club'
+ *             $ref: '#/components/schemas/State'
  *     responses:
  *       200:
- *         description: Club updated
+ *         description: State updated
  *       404:
- *         description: Club not found
+ *         description: State not found
  */
-router.put("/:id", auth, clubController.updateClub);
+router.put("/:id", auth, stateController.updateState);
 
 /**
  * @swagger
- * /clubs/{id}:
+ * /states/{id}:
  *   delete:
- *     summary: Delete a club by ID
- *     tags: [Clubs]
+ *     summary: Delete a state by ID
+ *     tags: [States]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -111,13 +111,13 @@ router.put("/:id", auth, clubController.updateClub);
  *         schema:
  *           type: integer
  *         required: true
- *         description: Club ID
+ *         description: State ID
  *     responses:
  *       200:
- *         description: Club deleted
+ *         description: State deleted
  *       404:
- *         description: Club not found
+ *         description: State not found
  */
-router.delete("/:id", auth, clubController.deleteClub);
+router.delete("/:id", auth, stateController.deleteState);
 
 module.exports = router;

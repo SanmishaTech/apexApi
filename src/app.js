@@ -8,7 +8,7 @@ const path = require("path");
 require("dotenv").config();
 const roleRoutes = require("./routes/roles");
 const userRoutes = require("./routes/users");
-const clubRoutes = require("./routes/club");
+const stateRoutes = require("./routes/state");
 const authRoutes = require("./routes/auth");
 const swaggerRouter = require("./swagger");
 
@@ -87,7 +87,7 @@ app.get("/health", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/roles", roleRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/clubs", clubRoutes);
+app.use("/api/states", stateRoutes);
  
  
 app.use(swaggerRouter);
