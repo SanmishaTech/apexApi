@@ -37,6 +37,7 @@ async function main() {
       mobile: '9876543210',
       email: 'info@sampleclub.com',
       password: await bcrypt.hash('club123', SALT_ROUNDS),
+      affiliationNumber: 'SAMPLE-12345',
     },
   });
 
